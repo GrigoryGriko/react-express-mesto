@@ -1,0 +1,10 @@
+.popup__status-image {
+  margin-bottom: 32px;
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
+  
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+}

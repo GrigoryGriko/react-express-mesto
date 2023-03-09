@@ -1,0 +1,14 @@
+.elements-grid__place-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  position: relative;
+
+  margin: 25px 0 26px 21px;
+  min-width: 246px;
+
+  font-weight: 900;
+  font-size: 24px;
+  color: #000;
+}

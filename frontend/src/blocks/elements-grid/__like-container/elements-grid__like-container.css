@@ -1,0 +1,8 @@
+.elements-grid__like-container {
+  display: block;
+  position: relative;
+  right: 20px;
+  min-width: 22px;
+  
+  text-align: center;
+}

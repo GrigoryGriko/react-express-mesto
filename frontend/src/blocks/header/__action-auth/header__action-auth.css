@@ -1,0 +1,12 @@
+.header__action-auth {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 400;
+  color: #A9A9A9;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  background: transparent;
+  border: none;
+}

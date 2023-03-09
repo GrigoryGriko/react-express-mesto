@@ -1,0 +1,5 @@
+.popup__content_properties_alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

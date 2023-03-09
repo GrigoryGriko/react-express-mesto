@@ -1,0 +1,11 @@
+.elements-grid {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 725px) {
+  .elements-grid {
+    margin-top: 36px;
+  }
+}

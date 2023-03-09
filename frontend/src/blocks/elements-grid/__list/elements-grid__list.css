@@ -1,0 +1,26 @@
+.elements-grid__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-auto-flow: row;
+  gap: 20px 17px;
+
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 726px) and (max-width: 982px) {
+  .elements-grid__list {
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+@media screen and (max-width: 725px) {
+  .elements-grid__list {
+    grid-template-columns: repeat(1, 282px);
+  }
+}
