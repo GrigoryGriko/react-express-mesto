@@ -87,7 +87,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46/', 
+  baseUrl: 'https://api.grigorygriko.student.nomoredomains.work/', 
   keyAuth: '110d7e44-821c-45aa-84e8-91b557d72ac5'
 });
 
