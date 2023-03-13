@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,7 +7,14 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
+/*
+const { NODE_ENV, JWT_SECRET } = process.env;
 
+const token = jwt.sign(
+  { _id: user._id },
+  NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'
+);
+*/
 const { PORT = 3000 } = process.env;
 
 const app = express();

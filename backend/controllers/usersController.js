@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+const { NODE_ENV, JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
@@ -118,7 +119,7 @@ module.exports.login = async (req, res, next) => {
       } else {
         const token = jwt.sign(
           { _id: user._id },
-          'pro-letter-crypto',
+          NODE_ENV === 'production' ? JWT_SECRET : 'pro-letter-crypto',
           { expiresIn: 3600 },
         );
 
