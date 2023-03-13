@@ -1,4 +1,4 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+const BASE_URL = 'https://api.grigorygriko.student.nomoredomains.work';
 
 function _getResponseData(res) {
   if (!res.ok) {
