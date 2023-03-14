@@ -1,7 +1,6 @@
 class Api {
-  constructor({baseUrl, keyAuth}) {
+  constructor({baseUrl}) {
     this._baseUrl = baseUrl;
-    this._keyAuth = keyAuth;
   }
 
   _getResponseData(res) {
@@ -12,28 +11,31 @@ class Api {
   }
 
   getInitCards() {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}cards`, {
       headers: {
-        authorization: this._keyAuth,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     }).then(res => this._getResponseData(res));
   }
 
   getInitUserData() {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}users/me`, {
       headers: {
-        authorization: this._keyAuth,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     }).then(res => this._getResponseData(res));
   }
 
   editDataUser({nameInput, jobInput}) {
+    const token = localStorage.getItem('jwt');
     return fetch((`${this._baseUrl}users/me`), {
       method: 'PATCH',
       headers: {
-        authorization: this._keyAuth,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: nameInput, about: jobInput})
@@ -41,10 +43,11 @@ class Api {
   }
 
   addCard({name, link}) {
+    const token = localStorage.getItem('jwt');
     return fetch((`${this._baseUrl}cards`), {
       method: 'POST',
       headers: {
-        authorization: this._keyAuth,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: name, link: link})
@@ -52,10 +55,11 @@ class Api {
   }
 
   updateAvatar(avatar) {
+    const token = localStorage.getItem('jwt');
     return fetch((`${this._baseUrl}users/me/avatar`), {
       method: 'PATCH',
       headers: {
-        authorization: this._keyAuth,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(avatar)
@@ -63,10 +67,11 @@ class Api {
   }
 
   deleteCard(cardId) {
+    const token = localStorage.getItem('jwt');
     return fetch((`${this._baseUrl}cards/${cardId}`), {
       method: 'DELETE',
       headers: {
-        authorization: this._keyAuth
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(cardId)
     }).then(res => this._getResponseData(res));
@@ -74,11 +79,12 @@ class Api {
 
   changeLikeCardStatus(cardId, isLiked) {
     const method = isLiked ? 'PUT' : 'DELETE';
+    const token = localStorage.getItem('jwt');
 
     return fetch((`${this._baseUrl}cards/${cardId}/likes`), {
       method: method,
       headers: {
-        authorization: this._keyAuth
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(cardId)
     }).then(res => this._getResponseData(res));
@@ -87,8 +93,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: 'https://api.grigorygriko.student.nomoredomains.work/', 
-  keyAuth: '110d7e44-821c-45aa-84e8-91b557d72ac5'
+  baseUrl: 'http://127.0.0.1:3001/',
 });
 
 export default api;

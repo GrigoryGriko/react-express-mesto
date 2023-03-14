@@ -12,7 +12,7 @@ module.exports.getAllCards = async (req, res, next) => {
   try {
     const card = await Card.find({});
     if (card) {
-      res.send({ card });
+      res.send(card);
     } else {
       throw new NotFoundError('Карточки не найдены');
     }
@@ -27,7 +27,7 @@ module.exports.createCard = async (req, res, next) => {
   try {
     const card = await Card.create({ name, link, owner: req.user._id });
     if (card) {
-      res.status(CODE_CREATED).send({ card });
+      res.status(CODE_CREATED).send(card);
     } else {
       throw new NotFoundError('Карточки не найдены');
     }
@@ -46,7 +46,7 @@ module.exports.deleteCardById = async (req, res, next) => {
       } else {
         return Card.findByIdAndRemove(req.params.cardId)
           .then(
-            res.status(CODE_OK).send({ card }),
+            res.status(CODE_OK).send(card),
           );
       }
     } else {
@@ -66,7 +66,7 @@ module.exports.likeCard = async (req, res, next) => {
       { new: true },
     );
     if (card) {
-      res.status(CODE_OK).send({ card });
+      res.status(CODE_OK).send(card);
     } else {
       throw new NotFoundError(`Карточка с id '${req.params.cardId}' не найдена`);
     }
@@ -84,7 +84,7 @@ module.exports.dislikeCard = async (req, res, next) => {
       { new: true },
     );
     if (card) {
-      res.status(CODE_OK).send({ card });
+      res.status(CODE_OK).send(card);
     } else {
       throw new NotFoundError(`Карточка с id '${req.params.cardId}' не найдена`);
     }

@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.grigorygriko.student.nomoredomains.work';
+const BASE_URL = 'http://127.0.0.1:3001';
 
 function _getResponseData(res) {
   if (!res.ok) {
@@ -26,10 +26,16 @@ export const authorize = (password, email) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({password, email})
-  }).then(res => _getResponseData(res));
+  }).then(res => _getResponseData(res))
+    .then((data) => {
+      localStorage.setItem('jwt', data.token);
+      return data;
+    })
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
+  const token = localStorage.getItem('jwt');
+
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {

@@ -34,18 +34,6 @@ function App() {
   const [infoTooltipState, setInfoTooltipState] = useState({ message: '', isError: false });
 
   const history = useHistory();
-  
-  React.useEffect(() => {
-    Promise.all([api.getInitCards(), api.getInitUserData()])
-    .then(([cards, user]) => {
-      setCurrentUser(user);
-
-      setCards(cards);
-    })
-    .catch((err) => {
-      console.log(`Ошибка загрузки данных пользователя ${err}`);
-    });
-  }, [])
 
   React.useEffect(() => {
     tokenCheck();
@@ -65,16 +53,26 @@ function App() {
             console.log(err);
           });
         }
+
+        Promise.all([api.getInitCards(), api.getInitUserData()])
+        .then(([cards, user]) => {
+          setCurrentUser(user);
+
+          setCards(cards);
+        })
+        .catch((err) => {
+          console.log(`Ошибка загрузки данных пользователя ${err}`);
+        });
       }
     }
-  }, [loggedIn])
+  }, [history, loggedIn])
   
   React.useEffect(() => {
     
     if (loggedIn) {
       history.push('/');
     }
-  }, [loggedIn]);
+  }, [history, loggedIn]);
 
 
   function handleLogin() {

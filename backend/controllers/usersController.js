@@ -123,14 +123,16 @@ module.exports.login = async (req, res, next) => {
           { expiresIn: 3600 },
         );
 
-        res
+        /*res
           .cookie('jwt', token, {
             maxAge: 3600000,
             httpOnly: true,
             sameSite: true,
           });
 
-        res.status(CODE_OK).send({ message: 'Вы успешно авторизованы' });
+        res.status(CODE_OK).send({ message: 'Вы успешно авторизованы' });*/
+
+        res.status(CODE_OK).send({ token });
       }
     }
   } catch (err) {
