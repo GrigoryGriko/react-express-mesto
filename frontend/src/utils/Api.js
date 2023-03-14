@@ -93,7 +93,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: 'https://api.grigorygriko.student.nomoredomains.work/',
+  baseUrl: 'https://api.grigorygriko.student.nomoredomains.work',
 });
 
 export default api;
