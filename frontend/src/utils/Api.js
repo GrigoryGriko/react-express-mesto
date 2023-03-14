@@ -12,7 +12,7 @@ class Api {
 
   getInitCards() {
     const token = localStorage.getItem('jwt');
-    return fetch(`${this._baseUrl}cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
         authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ class Api {
 
   getInitUserData() {
     const token = localStorage.getItem('jwt');
-    return fetch(`${this._baseUrl}users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ class Api {
 
   editDataUser({nameInput, jobInput}) {
     const token = localStorage.getItem('jwt');
-    return fetch((`${this._baseUrl}users/me`), {
+    return fetch((`${this._baseUrl}/users/me`), {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ class Api {
 
   addCard({name, link}) {
     const token = localStorage.getItem('jwt');
-    return fetch((`${this._baseUrl}cards`), {
+    return fetch((`${this._baseUrl}/cards`), {
       method: 'POST',
       headers: {
         authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ class Api {
 
   updateAvatar(avatar) {
     const token = localStorage.getItem('jwt');
-    return fetch((`${this._baseUrl}users/me/avatar`), {
+    return fetch((`${this._baseUrl}/users/me/avatar`), {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ class Api {
 
   deleteCard(cardId) {
     const token = localStorage.getItem('jwt');
-    return fetch((`${this._baseUrl}cards/${cardId}`), {
+    return fetch((`${this._baseUrl}/cards/${cardId}`), {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ class Api {
     const method = isLiked ? 'PUT' : 'DELETE';
     const token = localStorage.getItem('jwt');
 
-    return fetch((`${this._baseUrl}cards/${cardId}/likes`), {
+    return fetch((`${this._baseUrl}/cards/${cardId}/likes`), {
       method: method,
       headers: {
         authorization: `Bearer ${token}`,
@@ -93,7 +93,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: 'http://127.0.0.1:3001/',
+  baseUrl: 'https://api.grigorygriko.student.nomoredomains.work/',
 });
 
 export default api;

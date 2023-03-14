@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:3001';
+const BASE_URL = 'https://api.grigorygriko.student.nomoredomains.work';
 
 function _getResponseData(res) {
   if (!res.ok) {
