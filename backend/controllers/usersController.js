@@ -16,7 +16,7 @@ module.exports.getAllUsers = async (req, res, next) => {
   try {
     const user = await User.find({});
     if (user) {
-      res.status(CODE_OK).send({ user });
+      res.status(CODE_OK).send(user);
     } else {
       throw new NotFoundError('Пользователи не найдены');
     }
@@ -29,7 +29,7 @@ module.exports.getUserById = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId);
     if (user) {
-      res.status(CODE_OK).send({ user });
+      res.status(CODE_OK).send(user);
     } else {
       throw new NotFoundError(`Пользователь с id '${req.params.userId}' не найден`);
     }
@@ -43,7 +43,7 @@ module.exports.getUserData = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
     if (user) {
-      res.status(CODE_OK).send({ user });
+      res.status(CODE_OK).send(user);
     } else {
       throw new NotFoundError(`Пользователь с id '${req.user._id}' не найден`);
     }
@@ -69,7 +69,7 @@ module.exports.updateProfile = async (req, res, next) => {
       },
     );
     if (user) {
-      res.status(CODE_OK).send({ user });
+      res.status(CODE_OK).send(user);
     } else {
       throw new NotFoundError(`Пользователь с id '${req.params.userId}' не найден`);
     }
@@ -95,7 +95,7 @@ module.exports.updateAvatar = async (req, res, next) => {
     );
 
     if (user) {
-      res.status(CODE_OK).send({ user });
+      res.status(CODE_OK).send(user);
     } else {
       throw new NotFoundError(`Пользователь с id '${req.params.userId}' не найден`);
     }
@@ -164,12 +164,13 @@ module.exports.createUser = async (req, res, next) => {
       });
 
       if (user) {
-        res.status(CODE_CREATED).send({
+        /*user = {
           email,
           name,
           about,
           avatar,
-        });
+        };*/
+        res.status(CODE_CREATED).send(user);
       } else {
         throw new NotFoundError('Пользователи не найдены');
       }
