@@ -15,12 +15,12 @@ export default class Card extends React.Component {
   }
   
   render() {
-    this.isOwn = this.props.card.owner._id === this.props.currentUser._id;
+    this.isOwn = this.props.card.owner === this.props.currentUser._id;
     this.cardDeleteButtonClassName = (
       `elements-grid__delete ${this.isOwn ? '' : 'elements-grid__delete_hidden'}`
     );
 
-    this.isLiked = this.props.card.likes.some(i => i._id === this.props.currentUser._id);
+    this.isLiked = this.props.card.likes.some(id => id === this.props.currentUser._id);
 
     this.cardLikeButtonClassName = (
       `elements-grid__like ${this.isLiked ? 'elements-grid__like_active' : ''}`
