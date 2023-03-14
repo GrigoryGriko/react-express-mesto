@@ -36,6 +36,21 @@ function App() {
   const history = useHistory();
 
   React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      Promise.all([api.getInitCards(), api.getInitUserData()])
+          .then(([cards, user]) => {
+            setCurrentUser(user);
+
+            setCards(cards);
+          })
+          .catch((err) => {
+            console.log(`Ошибка загрузки данных пользователя ${err}`);
+          });
+    }
+  }, [loggedIn]);
+  
+  React.useEffect(() => {
     tokenCheck();
 
     function tokenCheck() {
@@ -46,26 +61,17 @@ function App() {
           auth.getContent(jwt).then((res) => {
             if (res) {
               setLoggedIn(true);
-              setUserData({_id: res.data._id, email: res.data.email});
+              setUserData({_id: res._id, email: res.email});
             }
           })
           .catch((err) => {
+            localStorage.removeItem('jwt');
             console.log(err);
           });
         }
-
-        Promise.all([api.getInitCards(), api.getInitUserData()])
-        .then(([cards, user]) => {
-          setCurrentUser(user);
-
-          setCards(cards);
-        })
-        .catch((err) => {
-          console.log(`Ошибка загрузки данных пользователя ${err}`);
-        });
       }
     }
-  }, [history, loggedIn])
+  }, [history])
   
   React.useEffect(() => {
     
