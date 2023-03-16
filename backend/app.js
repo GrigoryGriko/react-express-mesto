@@ -8,7 +8,7 @@ const routes = require('./routes/index');
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 
-const { PORT, CONNECT_DB } = process.env;
+const { PORT = 3000, CONNECT_DB = 'mongodb://localhost:27017/mestodb' } = process.env;
 
 const app = express();
 app.use(cors());
