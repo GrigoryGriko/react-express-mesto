@@ -8,7 +8,7 @@ const routes = require('./routes/index');
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 
-const { PORT = 3000 } = process.env;
+const { PORT, CONNECT_DB } = process.env;
 
 const app = express();
 app.use(cors());
@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect(CONNECT_DB);
 
 app.use(requestLogger);
 

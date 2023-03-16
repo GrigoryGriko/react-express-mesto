@@ -71,7 +71,7 @@ function App() {
         }
       }
     }
-  }, [history])
+  }, [history, loggedIn])
   
   React.useEffect(() => {
     
