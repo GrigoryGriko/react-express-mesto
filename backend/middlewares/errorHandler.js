@@ -3,7 +3,7 @@ const { CODE_SERVERERROR } = require('../constants/constants');
 
 const errorHandler = (err, req, res, next) => {
   const statusCode = err.errorCode || CODE_SERVERERROR;
-  const message = statusCode === 500 ? err.message : err.message;
+  const message = statusCode === 500 ? 'Произошла ошибка' : err.message;
   res.status(statusCode).send({ message });
   next();
 };

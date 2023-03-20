@@ -141,8 +141,6 @@ module.exports.createUser = async (req, res, next) => {
     avatar,
   } = req.body;
 
-  if (!email || !password) return next(new CastError('Не все поля заполнены'));
-
   try {
     const hash = await bcrypt.hash(password, 12);
     if (hash) {
