@@ -4,9 +4,9 @@
 
 IP 158.160.30.90
 
-Frontend https://api.grigorygriko.student.nomoredomains.work
+Frontend https://grigorygriko.student.nomoredomains.work
 
-Backend https://grigorygriko.student.nomoredomains.work
+Backend https://api.grigorygriko.student.nomoredomains.work
 
 1. Реализовано логгирование запросов и ошибок;
 2. Объединены фронтенд и бэкенд части приложения;
