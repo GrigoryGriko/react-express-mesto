@@ -25,12 +25,13 @@ class Register extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     const { password, email } = this.state;
+    console.log(0);
     auth.register(password, email)
     .then((res) => {
-      if (res.data) {
+        console.log(1);
         this.props.onFinal({ message: 'Вы успешно зарегистрировались!', isError: false });
+        console.log(2);
         this.props.history.push('/sign-in');
-      }
     })
     .catch(() => {
       this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true })
